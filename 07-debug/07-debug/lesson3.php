@@ -85,34 +85,37 @@ class Battle
     }
 
     private function judge(): string
-    {
+    {   $result = '';
+
         if ($this->first === $this->second) {
-            return '引き分け';
+            $result = '引き分け';
         }
 
         if ($this->first === 'グー' && $this->second === 'チョキ') {
-            return '勝ち';
+            $result = '勝ち';
         }
 
         if ($this->first === 'グー' && $this->second === 'パー') {
-            return '負け';
+            $result = '負け';
         }
 
         if ($this->first === 'チョキ' && $this->second === 'グー') {
-            return '負け';
+            $result = '負け';
         }
 
         if ($this->first === 'チョキ' && $this->second === 'パー') {
-            return '勝ち';
+            $result = '勝ち';
         }
 
         if ($this->first === 'パー' && $this->second === 'グー') {
-            return '勝ち';
+            $result = '勝ち';
         }
 
         if ($this->first === 'パー' && $this->second === 'チョキ') {
-            return '負け';
+            $result = '負け';
         }
+
+        return $result;
     }
     
     
