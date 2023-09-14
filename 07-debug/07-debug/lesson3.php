@@ -76,8 +76,8 @@ class Enemy extends Player
 
 class Battle
 {
-    public $first;
-    public $second;
+    private $first;
+    private $second;
     public function __construct(Me $me, Enemy $enemy)
     {
         $this->first  = $me->getChoice();
@@ -114,8 +114,9 @@ class Battle
         if ($this->first === 'パー' && $this->second === 'チョキ') {
             $result = '負け';
         }
-
+        
         return $result;
+        
     }
     
     
@@ -129,13 +130,12 @@ class Battle
 
     public function getVitories()
     {
-        $this->countVictories();
         return $_SESSION['result'];
     }
 
     public function showResult()
     {
-        return $this->judge();
+        return $this->judge();   
     }
 }
 
@@ -149,9 +149,10 @@ if (!empty($_POST)) {
     echo '<br>';
     $battle = new Battle($me, $enemy);
     echo '勝敗は'.$battle->showResult().'です。';
+    
     if ($battle->showResult() === '勝ち') {
-
         echo '<br>';
+        $battle->countVictories();
         echo $battle->getVitories().'回目の勝利です。';
     }
 }
